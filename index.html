@@ -66,8 +66,8 @@
       var config = {
         arguments: [],
         dataUrl: "",
-        frameworkUrl: buildUrl + "/game.framework.js.unityweb?v=1793537340",
-        codeUrl: buildUrl + "/game.wasm.unityweb?v=1793537340",
+        frameworkUrl: buildUrl + "/game.framework.js.unityweb?v=1793537458",
+        codeUrl: buildUrl + "/game.wasm.unityweb?v=1793537458",
         streamingAssetsUrl: "StreamingAssets",
 
         // If you have a custom web site structure, or want to place multiple Unity build instances on the same page,
@@ -133,7 +133,7 @@
       script.src = loaderUrl;
       script.onload = async () => {
         const blobs = [];
-        for (const p of dataParts) blobs.push(await (await fetch(buildUrl + "/" + p + "?v=1793537340")).blob());
+        for (const p of dataParts) blobs.push(await (await fetch(buildUrl + "/" + p + "?v=1793537458")).blob());
         config.dataUrl = URL.createObjectURL(new Blob(blobs));
         const loadingContainer = document.querySelector("#unity-loading-container");
         const progressBarFull = document.querySelector("#unity-progress-bar-full");
@@ -158,10 +158,10 @@
       document.body.appendChild(script);
 
     </script>
-    <style>#unity-container.unity-desktop{position:relative;left:auto;top:auto;transform:none;margin:16px auto 0;width:960px;max-width:100%}</style>
+    <style>#unity-container.unity-desktop{position:relative;left:auto;top:auto;transform:none;margin:16px auto 0;width:960px;max-width:100%}#unity-container.unity-mobile ~ #tsuwano-guide{margin-top:56px!important}@media (max-width:700px){#tsuwano-guide{margin-top:52px!important}}</style>
     <section id="tsuwano-guide" style="max-width:960px;margin:24px auto;padding:0 16px;font-family:sans-serif;line-height:1.8;color:#2b2622">
       <h1 style="font-size:1.4em;margin:0 0 8px">つわの寮</h1>
-      <p style="margin:0 0 8px"><a href="howto.html" style="color:#c8432b;font-weight:bold">▶ 写真つきの遊び方ページ（はじめての人へ）</a></p>
+      <p style="margin:4px 0 14px"><a href="howto.html" style="display:inline-block;background:#2f6f5e;color:#fff;font-weight:bold;font-size:1.15em;text-decoration:none;padding:12px 22px;border-radius:12px;box-shadow:0 4px 0 #20503f">📖 遊び方を見る（はじめての人へ）</a></p>
       <p>島根県津和野町のゲストハウス「つわの寮」の家守・青柳さんになって、津和野の日常に住むゲームです。朝のラジオ体操から夜の日記まで、1日は20分。毎日、何かひとつ面白いことが起きます。旅人と町の人をつなぐと、何日もかけて物語が進み、その結果が寮や町に残っていきます。</p>
       <p><strong>遊び方</strong>：上の画面の「はじめから」を押します。WASD・矢印で歩く（Shift で走る）、Space で話す・すすむ、数字キーでえらぶ、M で地図、Tab で今日の予定。画面をクリックすると、マウスでまわりを見られます。<strong>音が出ます</strong>（V キーで消せます）。スマホ・タブレットでは、画面の左がわをなぞって歩き（大きくなぞると走る）、右がわをなぞって見まわし、右下の「話す」「地図」「予定」のボタンと、会話の枠のタップで進めます（ミニゲームはおまかせで進みます）。はじめの読みこみに少し時間がかかります（約55MB）。</p>
       <p><strong>はじめての人へ</strong>：①「はじめから」を押す → ②青柳さんのあいさつを読む → ③ Tab（スマホは「予定」）で今日の予定を見て、朝のラジオ体操へ。あとは予定にそって、旅人を駅へ迎えに行ったり、町を歩いたり。M（スマホは「地図」）で、町・高校・駅・公民館・津和野川の河原・稲成神社・城跡へ行けます。夜の日記で1日が終わり、60日目（ゲームの1年）には1年のアルバムが見られます。</p>
