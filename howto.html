@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>つわの寮 遊び方</title>
+<meta name="description" content="島根県津和野町のゲストハウス「つわの寮」の家守・青柳さんになって、津和野の毎日をすごすブラウザゲーム。遊び方の案内。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f2e9; --paper:#fffdf8; --ink:#2b2622; --sub:#6b625b; --line:#e3d9c9;
+  --koi:#c8432b; --koi-ink:#fff; --moss:#4f6b4a; --sky:#e8eef0; --key:#efe6d6;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1d1a17; --paper:#26221e; --ink:#eee6dc; --sub:#b3a89c; --line:#3a342e;
+    --koi:#e2604a; --koi-ink:#fff; --moss:#8fb187; --sky:#22292b; --key:#3a332b;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1d1a17; --paper:#26221e; --ink:#eee6dc; --sub:#b3a89c; --line:#3a342e;
+  --koi:#e2604a; --koi-ink:#fff; --moss:#8fb187; --sky:#22292b; --key:#3a332b;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",system-ui,sans-serif;line-height:1.85;font-size:16px}
+img{max-width:100%;height:auto;display:block;border-radius:10px}
+a{color:var(--koi)}
+h1,h2,h3{font-family:"Zen Maru Gothic","Noto Sans JP",sans-serif;line-height:1.4}
+.in{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* はじめの大きな画面 */
+.hero{position:relative;background:#1b1714 url(img/st-ohirome.jpg) center/cover no-repeat;color:#fff}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,.35),rgba(20,16,12,.78))}
+.hero .in{position:relative;padding:88px 20px 72px}
+.hero .place{font-size:14px;letter-spacing:.2em;opacity:.9;margin:0}
+.hero h1{font-size:clamp(40px,8vw,72px);margin:4px 0 8px;letter-spacing:.06em}
+.hero .lead{font-size:clamp(17px,2.4vw,21px);max-width:640px;margin:0 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.play{display:inline-flex;align-items:center;gap:10px;background:var(--koi);color:var(--koi-ink);text-decoration:none;font-weight:700;font-size:20px;padding:14px 30px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.play:hover{filter:brightness(1.08)}
+.ghost{color:#fff;font-size:15px;padding:10px 18px;border:1px solid rgba(255,255,255,.6);border-radius:999px;text-decoration:none}
+.hero .small{font-size:13px;opacity:.85;margin:14px 0 0}
+
+section{padding:64px 0}
+section+section{border-top:1px solid var(--line)}
+h2{font-size:clamp(24px,3.4vw,30px);margin:0 0 8px}
+.kicker{color:var(--koi);font-weight:700;font-size:14px;letter-spacing:.12em;margin:0}
+.intro{color:var(--sub);max-width:720px;margin:0 0 32px}
+
+/* 3つのたのしさ */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.card .tx{padding:16px 18px 20px}
+.card h3{margin:0 0 6px;font-size:19px}
+.card p{margin:0;color:var(--sub);font-size:15px}
+
+/* 1日の流れ */
+.day{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:start}
+.flow{list-style:none;margin:0;padding:0;position:relative}
+.flow::before{content:"";position:absolute;left:58px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.flow li{display:grid;grid-template-columns:48px 1fr;gap:22px;padding:8px 0;position:relative}
+.flow .t{font-weight:700;color:var(--moss);font-size:14px;text-align:right;padding-top:2px}
+.flow li::after{content:"";position:absolute;left:53px;top:16px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--koi)}
+.flow b{display:block}
+.flow span{color:var(--sub);font-size:15px}
+
+/* 操作 */
+.ctrl{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.box h3{margin:0 0 12px;font-size:19px}
+.keys{display:grid;grid-template-columns:auto 1fr;gap:10px 16px;margin:0}
+.keys dt{white-space:nowrap}
+.keys dd{margin:0;color:var(--sub)}
+kbd{display:inline-block;background:var(--key);border:1px solid var(--line);border-bottom-width:3px;border-radius:6px;padding:0 8px;font-family:inherit;font-size:14px;line-height:1.7;margin-right:2px}
+
+/* はじめの5分 */
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 16px;position:relative}
+.steps li::before{counter-increment:s;content:counter(s);display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--koi);color:var(--koi-ink);font-weight:700;margin-bottom:10px}
+.steps b{display:block;margin-bottom:4px}
+.steps span{font-size:14px;color:var(--sub)}
+
+/* 行ける場所 */
+.places{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.places figure{margin:0}
+.places figcaption{font-size:14px;margin-top:6px}
+.places figcaption small{display:block;color:var(--sub)}
+
+/* コツ・よくある質問 */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:12px 28px}
+details{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+summary{cursor:pointer;font-weight:700}
+details p{margin:8px 0 0;color:var(--sub);font-size:15px}
+
+.about{display:grid;grid-template-columns:1fr 1.3fr;gap:32px;align-items:center}
+.end{text-align:center;background:var(--sky)}
+.end h2{margin-bottom:16px}
+.end .play{font-size:22px}
+footer{padding:28px 0 40px;color:var(--sub);font-size:13px;text-align:center}
+.en{font-size:14px;color:var(--sub)}
+
+@media (max-width:900px){
+  .three,.ctrl,.day,.about,.faq{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .places{grid-template-columns:1fr 1fr}
+}
+@media (max-width:520px){
+  .in{padding:0 16px}
+  .hero .in{padding:64px 16px 52px}
+  section{padding:48px 0}
+  .steps{grid-template-columns:1fr}
+  .play{font-size:18px;padding:13px 24px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="in">
+    <p class="place">島根県 津和野町</p>
+    <h1>つわの寮</h1>
+    <p class="lead">山あいの城下町の、小さなゲストハウス。<br>家守の青柳さんになって、旅人と町の人をつなぐ毎日をすごしてみませんか。</p>
+    <div class="btns">
+      <a class="play" href="./">▶ いますぐ遊ぶ</a>
+      <a class="ghost" href="./?mute=1">音なしで遊ぶ</a>
+    </div>
+    <p class="small">ブラウザで、そのまま遊べます（インストール不要・無料）。はじめの読みこみに少し時間がかかります。</p>
+  </div>
+</header>
+
+<main>
+
+<section id="what">
+  <div class="in">
+    <p class="kicker">どんなゲーム？</p>
+    <h2>毎日、なにかひとつ面白いことが起きる</h2>
+    <p class="intro">朝のラジオ体操から、夜の日記まで。ゲームの1日は、だいたい20分。予約の返事、部屋のそうじ、駅への迎え……ふだんの仕事のあいまに、旅人と町の人のあいだで小さなできごとが起きます。</p>
+    <div class="three">
+      <div class="card">
+        <img src="img/r-frisbee.jpg" alt="夕方の津和野川の河原で、旅人と高校生とフリスビー" loading="lazy">
+        <div class="tx"><h3>毎日ちがう、小さなできごと</h3><p>河原でフリスビー、食堂でナンの会、公民館で神楽の練習。季節ごとのできごとも待っています。</p></div>
+      </div>
+      <div class="card">
+        <img src="img/st-ohirome.jpg" alt="町の人たちと旅人が青柳さんをかこんで立っている" loading="lazy">
+        <div class="tx"><h3>人をつなぐと、物語が動く</h3><p>「会ってみますか？」の一声で、旅人と町の人が出会います。何日もかけて進む物語が、いくつもあります。</p></div>
+      </div>
+      <div class="card">
+        <img src="img/k-wall.jpg" alt="寮の食堂のかべに、高校生の手紙とノートがかざってある" loading="lazy">
+        <div class="tx"><h3>えらんだことが、残っていく</h3><p>もらった手紙をかべにはる、空き家にあかりがつく。あなたのえらんだことが、次の日の寮や町に残ります。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="day">
+  <div class="in day">
+    <div>
+      <p class="kicker">1日の流れ</p>
+      <h2>家守の1日</h2>
+      <p class="intro">することは、画面の右上の「今日の予定」に出ています。予定どおりに進めても、寄り道しても大丈夫。</p>
+      <ol class="flow">
+        <li><span class="t">朝</span><div><b>寮の前でラジオ体操</b><span>体操のあとの立ち話が、じつは本番。</span></div></li>
+        <li><span class="t">午前</span><div><b>予約の返事・部屋割り・そうじ</b><span>小さなミニゲームで、寮の仕事をこなします。</span></div></li>
+        <li><span class="t">昼</span><div><b>駅へ迎えに行って、町を案内</b><span>世界中から、いろんな旅人がやってきます。</span></div></li>
+        <li><span class="t">夕方</span><div><b>今日のできごと</b><span>食堂・河原・公民館・神社……どこで何が起きるかは、その日しだい。</span></div></li>
+        <li><span class="t">夜</span><div><b>日記を書いて、おやすみ</b><span>今日あったことが、青柳さんの日記になります。</span></div></li>
+      </ol>
+    </div>
+    <img src="img/hap-1.jpg" alt="ゲームの画面。食堂に旅人と高校生、右上に今日の予定、下に会話の枠" loading="lazy">
+  </div>
+</section>
+
+<section id="controls">
+  <div class="in">
+    <p class="kicker">操作</p>
+    <h2>パソコンでも、スマホでも</h2>
+    <p class="intro">ゲームの中でも、タイトル画面の「遊び方」から、いつでも見なおせます。</p>
+    <div class="ctrl">
+      <div class="box">
+        <h3>パソコン（キーボードとマウス）</h3>
+        <dl class="keys">
+          <dt><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / 矢印</dt><dd>歩く</dd>
+          <dt><kbd>Shift</kbd></dt><dd>走る</dd>
+          <dt>マウス</dt><dd>まわりを見る（画面をクリックしてから）</dd>
+          <dt><kbd>Space</kbd></dt><dd>話す・会話をすすめる</dd>
+          <dt><kbd>1</kbd>〜<kbd>4</kbd></dt><dd>えらぶ</dd>
+          <dt><kbd>Tab</kbd></dt><dd>今日の予定</dd>
+          <dt><kbd>M</kbd></dt><dd>地図（ほかの場所へ行く）</dd>
+          <dt><kbd>B</kbd></dt><dd>図鑑</dd>
+          <dt><kbd>V</kbd></dt><dd>音を消す・出す</dd>
+          <dt><kbd>Esc</kbd></dt><dd>マウスを画面から出す</dd>
+        </dl>
+      </div>
+      <div class="box">
+        <h3>スマホ・タブレット（指で）</h3>
+        <dl class="keys">
+          <dt>画面の左がわ</dt><dd>なぞって歩く（大きくなぞると走る）</dd>
+          <dt>画面の右がわ</dt><dd>なぞって、まわりを見る</dd>
+          <dt>「話す」ボタン</dt><dd>近くの人と話す</dd>
+          <dt>会話の枠</dt><dd>タップして、すすむ</dd>
+          <dt>「予定」「地図」</dt><dd>今日の予定・ほかの場所へ</dd>
+        </dl>
+        <p class="en" style="margin:16px 0 0">ミニゲームは、スマホではおまかせで進みます。横向きの画面がおすすめです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="first">
+  <div class="in">
+    <p class="kicker">はじめての人へ</p>
+    <h2>最初の5分は、こう遊ぶ</h2>
+    <p class="intro">迷ったら、とりあえず「今日の予定」を見ればOK。</p>
+    <ol class="steps">
+      <li><b>「はじめから」を押す</b><span>タイトル画面で。遊んだところは自動で保存されます。</span></li>
+      <li><b>あいさつを読む</b><span>青柳さんが、寮のことを話してくれます。</span></li>
+      <li><b>予定を見る</b><span><kbd>Tab</kbd>（スマホは「予定」）。いちばん上が、次にすること。</span></li>
+      <li><b>ラジオ体操へ</b><span>寮の前の駐車場へ。近づいて <kbd>Space</kbd>。</span></li>
+      <li><b>地図で出かける</b><span><kbd>M</kbd>で駅や町へ。旅人を迎えに行こう。</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="places">
+  <div class="in">
+    <p class="kicker">行ける場所</p>
+    <h2>津和野の町を歩く</h2>
+    <p class="intro">地図から、10の場所へ行けます。お店や場所は、津和野町に本当にあるものをもとにしています。</p>
+    <div class="places">
+      <figure><img src="img/b-inari3.jpg" alt="朱色の鳥居が並ぶ、太皷谷稲成神社の参道" loading="lazy"><figcaption>太皷谷稲成神社<small>朱色の鳥居がつづく参道</small></figcaption></figure>
+      <figure><img src="img/b-unkai3.jpg" alt="霧の朝、津和野城跡の石垣の上から雲海を見る" loading="lazy"><figcaption>津和野城跡<small>霧の朝は、雲海が見られるかも</small></figcaption></figure>
+      <figure><img src="img/z-hanami2.jpg" alt="春の寮の前で、旅人と町の人が花見" loading="lazy"><figcaption>つわの寮<small>食堂・個室・駐車場。春は花見も</small></figcaption></figure>
+      <figure><img src="img/b-kagura2.jpg" alt="夜の公民館で、神楽の練習" loading="lazy"><figcaption>公民館<small>夜は神楽やカラオケ大会</small></figcaption></figure>
+    </div>
+    <p class="en" style="margin-top:16px">ほかにも：殿町通り・本町通り／津和野高校／津和野駅／津和野川の河原。</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="in">
+    <p class="kicker">コツと、よくある質問</p>
+    <h2>知っておくと、もっと楽しい</h2>
+    <div class="faq">
+      <details open><summary>なにをすればいいか、わからなくなった</summary><p><kbd>Tab</kbd>（スマホは「予定」）で今日の予定を見てください。次にすることと、その場所が出ています。頭の上に「！」が出ている人は、話しかけると何かがあります。</p></details>
+      <details><summary>つづきから遊べる？</summary><p>自動で保存されます。同じブラウザでもう一度開けば、タイトル画面の「つづきから」で、その日から再開できます。</p></details>
+      <details><summary>音を出したくない</summary><p>上の「音なしで遊ぶ」から始めるか、ゲームの中で <kbd>V</kbd> を押してください。</p></details>
+      <details><summary>なかなか始まらない</summary><p>はじめの読みこみは約55MBあります。Wi‑Fi のある場所がおすすめです。2回目からは早くなります。</p></details>
+      <details><summary>旅人と町の人を会わせるには？</summary><p>夕方の「会ってみますか」の時間に、旅人に話しかけます。だれに会わせるかで、そのあとのできごとが変わります。</p></details>
+      <details><summary>ゲームの1年って？</summary><p>60日目がゲームの1年。その夜に、出会った人や物語をふりかえる「1年のアルバム」が見られます。</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="in about">
+    <img src="img/aoyagi-1.jpg" alt="ゲームの主人公、青柳さんの姿" loading="lazy">
+    <div>
+      <p class="kicker">このゲームについて</p>
+      <h2>主人公は、本当の家守さん</h2>
+      <p>つわの寮は、島根県津和野町に本当にあるゲストハウスです。主人公の青柳さんは、つわの寮の本当の家守さん（ご本人の了承をいただいています）。ラジオ体操、料理の会、英語でおもてなし講座……ゲームのできごとの多くは、青柳さんが町で本当にしてきたことをもとにしています。</p>
+      <p style="color:var(--sub);font-size:15px">旅人・町の人・高校生は、みんな架空の人です。</p>
+    </div>
+  </div>
+</section>
+
+<section class="end">
+  <div class="in">
+    <h2>さあ、津和野の朝へ。</h2>
+    <div class="btns" style="justify-content:center">
+      <a class="play" href="./">▶ いますぐ遊ぶ</a>
+      <a class="ghost" style="color:var(--ink);border-color:var(--line)" href="./?mute=1">音なしで遊ぶ</a>
+    </div>
+    <p class="en" style="margin-top:22px">Tsuwano Ryo — a free browser game about everyday life at a small guesthouse in Tsuwano, Shimane, Japan. Walk: WASD / arrows (Shift to run) · Talk: Space · Choose: 1–4 · Plan: Tab · Map: M · Sound: V.</p>
+  </div>
+</section>
+
+</main>
+<footer>つわの寮 ／ パソコンのブラウザ（Chrome がおすすめ）と、スマホ・タブレットのブラウザで遊べます。</footer>
+</body>
+</html>
