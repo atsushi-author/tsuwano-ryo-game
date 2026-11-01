@@ -66,8 +66,8 @@
       var config = {
         arguments: [],
         dataUrl: "",
-        frameworkUrl: buildUrl + "/game.framework.js.unityweb?v=1793505242",
-        codeUrl: buildUrl + "/game.wasm.unityweb?v=1793505242",
+        frameworkUrl: buildUrl + "/game.framework.js.unityweb?v=1793506285",
+        codeUrl: buildUrl + "/game.wasm.unityweb?v=1793506285",
         streamingAssetsUrl: "StreamingAssets",
 
         // If you have a custom web site structure, or want to place multiple Unity build instances on the same page,
@@ -133,7 +133,7 @@
       script.src = loaderUrl;
       script.onload = async () => {
         const blobs = [];
-        for (const p of dataParts) blobs.push(await (await fetch(buildUrl + "/" + p + "?v=1793505242")).blob());
+        for (const p of dataParts) blobs.push(await (await fetch(buildUrl + "/" + p + "?v=1793506285")).blob());
         config.dataUrl = URL.createObjectURL(new Blob(blobs));
         const loadingContainer = document.querySelector("#unity-loading-container");
         const progressBarFull = document.querySelector("#unity-progress-bar-full");
@@ -162,7 +162,7 @@
     <section id="tsuwano-guide" style="max-width:960px;margin:24px auto;padding:0 16px;font-family:sans-serif;line-height:1.8;color:#2b2622">
       <h1 style="font-size:1.4em;margin:0 0 8px">つわの寮</h1>
       <p>島根県津和野町のゲストハウス「つわの寮」の家守・青柳さんになって、津和野の日常に住むゲームです。朝のラジオ体操から夜の日記まで、1日は20分。毎日、何かひとつ面白いことが起きます。旅人と町の人をつなぐと、何日もかけて物語が進み、その結果が寮や町に残っていきます。</p>
-      <p><strong>遊び方</strong>：上の画面の「はじめから」を押します。WASD・矢印で歩く、Space で話す・すすむ、数字キーでえらぶ、M で地図、Tab で今日の予定。画面をクリックすると、マウスでまわりを見られます。<strong>音が出ます</strong>（V キーで消せます）。パソコンのブラウザで遊んでください。はじめの読みこみに少し時間がかかります（約55MB）。</p>
+      <p><strong>遊び方</strong>：上の画面の「はじめから」を押します。WASD・矢印で歩く、Space で話す・すすむ、数字キーでえらぶ、M で地図、Tab で今日の予定。画面をクリックすると、マウスでまわりを見られます。<strong>音が出ます</strong>（V キーで消せます）。スマホ・タブレットでは、画面の左がわをなぞって歩き、右がわをなぞって見まわし、右下の「話す」「地図」「予定」のボタンと、会話の枠のタップで進めます（ミニゲームはおまかせで進みます）。はじめの読みこみに少し時間がかかります（約55MB）。</p>
       <p style="font-size:.9em;color:#6b625b">主人公の青柳さんは、つわの寮の本当の家守さんです（ご本人の了承をいただいています）。旅人・町の人・高校生は、みんな架空の人です。お店や場所は、津和野町に本当にあるものをもとにしています。</p>
       <p style="font-size:.9em;color:#6b625b">Tsuwano Ryo — a browser game about everyday life at a guesthouse in Tsuwano, Shimane, Japan. Walk: WASD / arrows, talk: Space, choose: number keys. Sound on (press V to mute).</p>
     </section>
