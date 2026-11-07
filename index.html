@@ -66,8 +66,8 @@
       var config = {
         arguments: [],
         dataUrl: "",
-        frameworkUrl: buildUrl + "/game.framework.js.unityweb?v=1793982034",
-        codeUrl: buildUrl + "/game.wasm.unityweb?v=1793982034",
+        frameworkUrl: buildUrl + "/game.framework.js.unityweb?v=1794025541",
+        codeUrl: buildUrl + "/game.wasm.unityweb?v=1794025541",
         streamingAssetsUrl: "StreamingAssets",
 
         // If you have a custom web site structure, or want to place multiple Unity build instances on the same page,
@@ -133,7 +133,7 @@
       script.src = loaderUrl;
       script.onload = async () => {
         const blobs = [];
-        for (const p of dataParts) blobs.push(await (await fetch(buildUrl + "/" + p + "?v=1793982034")).blob());
+        for (const p of dataParts) blobs.push(await (await fetch(buildUrl + "/" + p + "?v=1794025541")).blob());
         config.dataUrl = URL.createObjectURL(new Blob(blobs));
         const loadingContainer = document.querySelector("#unity-loading-container");
         const progressBarFull = document.querySelector("#unity-progress-bar-full");
